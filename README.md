@@ -7,13 +7,13 @@ The data is based from January 2020 to March 2020 - so if you do use this app, e
 Dashboard Features:
 
 Total Deaths
-Recovered Over Time
-Deaths And Predicts Over Time 
-Deaths By Country Overy Time 
+- Recovered Over Time
+- Deaths And Predicts Over Time 
+- Deaths By Country Overy Time 
 
 Config: 
-index=covid
-sourcetype = covid_csv
+- index=covid
+- sourcetype = covid_csv
 
 
 
