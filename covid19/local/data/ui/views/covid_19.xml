@@ -3,7 +3,7 @@
   <description>covi data</description>
   <row>
     <panel>
-      <title>UK Confirmed Cases</title>
+      <title>UK Total Confirmed Cases</title>
       <single>
         <search>
           <query>index=covid sourcetype="covid_csv" Confirmed=*  Country_Region=UK OR Country_Region="United Kingdom" | stats count</query>
@@ -39,6 +39,32 @@
         <option name="trendColorInterpretation">standard</option>
         <option name="trendDisplayMode">absolute</option>
         <option name="trendInterval">-24h</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>UK Total Recovered</title>
+      <single>
+        <search>
+          <query>index=covid Recovered=*  Country_Region=UK OR Country_Region="United Kingdom" | stats count</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0x53a051"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
         <option name="unitPosition">after</option>
         <option name="useColors">1</option>
         <option name="useThousandSeparators">1</option>
