@@ -18,7 +18,7 @@
       </single>
     </panel>
     <panel>
-      <title>UK Total deaths</title>
+      <title>UK Total Deaths</title>
       <single>
         <search>
           <query>index=covid Deaths=* Country_Region=UK | stats count</query>
@@ -45,7 +45,7 @@
       </single>
     </panel>
     <panel>
-      <title>UK deaths per day</title>
+      <title>UK Deaths Per Day</title>
       <single>
         <search>
           <query>index=covid Deaths=* Country_Region=UK | timechart span=1d max(Deaths)</query>
@@ -70,8 +70,10 @@
         <option name="useThousandSeparators">1</option>
       </single>
     </panel>
+  </row>
+  <row>
     <panel>
-      <title>World total deaths</title>
+      <title>World Total Deaths</title>
       <single>
         <search>
           <query>index=covid Deaths=* | timechart sum(Deaths)</query>
@@ -99,7 +101,33 @@
       </single>
     </panel>
     <panel>
-      <title>World recovered over time</title>
+      <title>World Total Confirmed</title>
+      <single>
+        <search>
+          <query>index=covid sourcetype="covid_csv" Confirmed=*  Country_Region=*  | stats count</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>World Total Recovered</title>
       <single>
         <search>
           <query>index=covid Recovered=*| timechart sum(Recovered)</query>
