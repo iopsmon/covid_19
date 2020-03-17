@@ -7,14 +7,21 @@ The data is based from January 2020 to March 2020 - so if you do use this app, e
 Dashboard Features:
 
 
-- UK total deaths
-- UK deaths per day
-- World total deaths
-- World recovered over time
+- UK Total Confirmed Cases
+- UK Total Deaths
+- WUK Total Recovered
+- UK Deaths Per Day
+- World Total Deaths
+- World Total Confirmed
+- World Total Recovered
 - Deaths and predicts over time
-- Deaths over time
-- Deaths by country over time
-- Table / Confirmed / Recovered / Deaths
+- Deaths Over Time 
+- Deaths by country over time 
+- Deaths by country Pie Chart 
+- Table / Confirmed / Recovered / Deaths 
+- Deaths Geo Map
+
+
 
 Config: 
 - index=covid
