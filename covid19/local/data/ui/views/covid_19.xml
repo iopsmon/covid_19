@@ -1,9 +1,62 @@
 <dashboard>
-  <label>covid_19</label>
+  <label>covid_19 - John Hopkins Data Sets</label>
   <description>covi data</description>
   <row>
     <panel>
-      <title>total deaths</title>
+      <title>UK total deaths</title>
+      <single>
+        <search>
+          <query>index=covid Deaths=* Country_Region=UK | stats count</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">-24h</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>UK deaths per day</title>
+      <single>
+        <search>
+          <query>index=covid Deaths=* Country_Region=UK | timechart span=1d max(Deaths)</query>
+          <earliest>0</earliest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="drilldown">none</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trellis.enabled">0</option>
+        <option name="trellis.scales.shared">1</option>
+        <option name="trellis.size">medium</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="unitPosition">after</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <title>World total deaths</title>
       <single>
         <search>
           <query>index=covid Deaths=* | timechart sum(Deaths)</query>
@@ -31,7 +84,7 @@
       </single>
     </panel>
     <panel>
-      <title>recovered over time</title>
+      <title>World recovered over time</title>
       <single>
         <search>
           <query>index=covid Recovered=*| timechart sum(Recovered)</query>
@@ -182,6 +235,26 @@
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
       </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>overall table</title>
+      <table>
+        <search>
+          <query>index=covid sourcetype=covid_csv | table Country_Region, Confirmed,  Recovered, Deaths | sort - Deaths</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <sampleRatio>1</sampleRatio>
+        </search>
+        <option name="count">20</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">none</option>
+        <option name="percentagesRow">false</option>
+        <option name="rowNumbers">false</option>
+        <option name="totalsRow">false</option>
+        <option name="wrap">true</option>
+      </table>
     </panel>
   </row>
   <row>
