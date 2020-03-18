@@ -106,7 +106,7 @@
       <title>World Total Deaths</title>
       <single>
         <search>
-          <query>index=covid Deaths=* | timechart sum(Deaths)</query>
+          <query>index=covid Deaths=* Country_Region=* | stats count</query>
           <earliest>0</earliest>
           <latest></latest>
           <sampleRatio>1</sampleRatio>
@@ -134,8 +134,9 @@
       <title>World Total Confirmed</title>
       <single>
         <search>
-          <query>index=covid sourcetype="covid_csv" Confirmed=*  Country_Region=*  | stats count</query>
+          <query>index=covid  sourcetype="covid_csv"  Confirmed=*| stats max(Confirmed)</query>
           <earliest>0</earliest>
+          <latest></latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="colorBy">value</option>
@@ -144,6 +145,7 @@
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
         <option name="rangeValues">[0]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trellis.enabled">0</option>
