@@ -118,8 +118,10 @@
     <panel>
       <title>World Total Confirmed</title>
       <single>
-        <search base="baseSearch2_WORLD">
-          <query>search Confirmed=*  | timechart max(Confirmed)</query>
+        <search >
+            <query>index=covid Confirmed=* |  timechart sum(Confirmed)</query>
+          <earliest>$earliest$</earliest>
+          <latest>$latest$</latest>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
