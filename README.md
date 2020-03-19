@@ -4,7 +4,7 @@ This apps provides a dashboard statistics relaated to the Corona Virus, its just
 
 The data is based from January 2020 to March 2020 - so if you do use this app, ensure you search all time. 
 
-![](images/covid_19.jpg)
+![](images/covid_19.JPG)
 
 Dashboard Features:
 
