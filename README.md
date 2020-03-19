@@ -11,15 +11,11 @@ Dashboard Features:
 
 - UK Total Confirmed Cases
 - UK Total Deaths
-- WUK Total Recovered
-- UK Deaths Per Day
+- UK Total Recovered
 - World Total Deaths
 - World Total Confirmed
 - World Total Recovered
 - Deaths and predicts over time
-- Deaths Over Time 
-- Deaths by country over time 
-- Deaths by country Pie Chart 
 - Table / Confirmed / Recovered / Deaths 
 - Deaths Geo Map
 
