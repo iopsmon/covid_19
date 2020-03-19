@@ -283,9 +283,11 @@
       <title>overall table</title>
       <table>
         <search base="baseSearch2_WORLD">
-          <query> |  fields Country_Region, Deaths, Confirmed, Recovered |  table Country_Region, Confirmed, Recovered, Deaths 
+          <query> 
+          | table Country_Region, Confirmed, Recovered, Deaths 
           | sort - Deaths 
-          | dedup Country_Region          </query>
+          | dedup Country_Region
+          </query>
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
