@@ -1,16 +1,27 @@
 <dashboard theme="dark">
   <label>Covid_19 App - John Hopkins Data Set - Updated Daily 1 File only</label>
-  <description>covi data</description>
+  <description>Covid Data</description>
+  <search id="baseSearch1_UK">
+    <query>index=covid sourcetype=covid_csv Country_Region=UK OR Country_Region="United Kingdom" 
+    | fields Deaths, Confirmed, Recovered </query>
+    <earliest>1</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
+  <search id="baseSearch2_WORLD">
+    <query>index=covid sourcetype=covid_csv  
+    | fields Deaths, Confirmed, Recovered </query>
+    <earliest>1</earliest>
+    <latest>now</latest>
+    <sampleRatio>1</sampleRatio>
+  </search>
   <row>
     <panel>
       <title>UK Total Confirmed Cases</title>
       <single>
-        <search>
-          <query>index=covid sourcetype=covid_csv Country_Region="United Kingdom" 
-| stats max(Confirmed)</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <sampleRatio>1</sampleRatio>
+        <search base="baseSearch1_UK">
+          <query>search Confirmed=*  
+            | timechart max(Confirmed) </query>
         </search>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
@@ -21,13 +32,10 @@
       </single>
     </panel>
     <panel>
-      <title>UK Deaths</title>
+      <title>UK Total Deaths</title>
       <single>
-        <search>
-          <query>index=covid Deaths=* Country_Region=UK OR Country_Region="United Kingdom"  | timechart span=1d max(Deaths)</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <sampleRatio>1</sampleRatio>
+        <search base="baseSearch1_UK">
+          <query>search Deaths=* | timechart max(Deaths) </query>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -51,11 +59,10 @@
     <panel>
       <title>UK Total Recovered</title>
       <single>
-        <search>
-          <query>index=covid Recovered=*  Country_Region=UK OR Country_Region="United Kingdom" | stats count</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <sampleRatio>1</sampleRatio>
+        <search base="baseSearch1_UK">
+          <query>search Recovered=*  | timechart max(Recovered) </query>
+          
+          
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -77,16 +84,14 @@
       </single>
     </panel>
   </row>
+ 
   <row>
     <panel>
-      <title>World Total Deaths</title>
+      <title>World Total Confirmed</title>
       <single>
-        <search>
-          <query>index=covid Deaths=* Country_Region=* | stats count</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <sampleRatio>1</sampleRatio>
-        </search>
+        <search base="baseSearch2_WORLD">
+          <query>search Confirmed=*  | timechart max(Confirmed)</query>
+             </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
@@ -107,13 +112,10 @@
       </single>
     </panel>
     <panel>
-      <title>World Total Confirmed</title>
+      <title>World Total Deaths</title>
       <single>
-        <search>
-          <query>index=covid  sourcetype="covid_csv"  Confirmed=*| stats max(Confirmed)</query>
-          <earliest>0</earliest>
-          <latest></latest>
-          <sampleRatio>1</sampleRatio>
+        <search base="baseSearch2_WORLD">
+          <query>search Deaths=* | timechart max(Deaths) </query>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -137,11 +139,9 @@
     <panel>
       <title>World Total Recovered</title>
       <single>
-        <search>
-          <query>index=covid Recovered=*| timechart sum(Recovered)</query>
-          <earliest>0</earliest>
-          <sampleRatio>1</sampleRatio>
-        </search>
+        <search base="baseSearch2_WORLD">
+          <query>search Recovered=*  | timechart max(Recovered) </query>
+                </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
         <option name="drilldown">none</option>
@@ -206,7 +206,7 @@
     <panel>
       <title>deaths over time</title>
       <chart>
-        <search>
+         <search>
           <query>index=covid Deaths=* | timechart span=1d count</query>
           <earliest>0</earliest>
           <sampleRatio>1</sampleRatio>
