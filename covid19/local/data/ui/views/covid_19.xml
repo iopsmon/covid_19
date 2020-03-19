@@ -6,7 +6,9 @@
       <title>UK Total Confirmed Cases</title>
       <single>
         <search>
-          <query>index=covid sourcetype="covid_csv" Confirmed=* Country_Region=UK OR Country_Region="United Kingdom" | stats count</query>
+          <query>index=covid sourcetype=covid_csv Country_Region=UK OR Country_Region="United Kingdom" 
+| stats sum(Confirmed) as total 
+| table total</query>
           <earliest>0</earliest>
           <latest></latest>
           <sampleRatio>1</sampleRatio>
