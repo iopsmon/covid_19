@@ -260,9 +260,11 @@
       <title>deaths geo view</title>
       <map>
         <search>
-          <query>index=covid sourcetype=covid_csv Deaths=* 
-| geostats latfield=Latitude longfield=Longitude count by Country_Region | fields - OTHER</query>
+          <query>index=covid sourcetype=covid_csv Deaths=*  
+ earliest=-6mon@mon latest=now
+| geostats latfield=Latitude longfield=Longitude count max(Deaths) AS Deaths | fields - count OTHER</query>
           <earliest>0</earliest>
+          <latest></latest>
           <sampleRatio>1</sampleRatio>
         </search>
         <option name="drilldown">none</option>
@@ -287,6 +289,7 @@
         <option name="mapping.tileLayer.minZoom">0</option>
         <option name="mapping.tileLayer.tileOpacity">1</option>
         <option name="mapping.type">marker</option>
+        <option name="refresh.display">progressbar</option>
         <option name="trellis.enabled">0</option>
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
