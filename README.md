@@ -1,8 +1,8 @@
 Covid 19 app 
 
-This apps provides a dashboard statistics relaated to the Corona Virus, its just for learning purposes. 
+This apps provides  dashboard statistics related to the Corona Virus, its just for learning purposes. 
 
-The data is based from January 2020 to March 2020 - so if you do use this app, ensure you search all time. 
+The data is based from January 2020 onwards  - so if you do use this app, ensure you search all time. 
 
 ![](images/covid_19.JPG)
 
