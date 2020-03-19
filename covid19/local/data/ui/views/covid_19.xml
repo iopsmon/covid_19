@@ -1,5 +1,5 @@
 <dashboard theme="dark">
-  <label>Covid_19 App - John Hopkins Data Set - Updated Daily 1 File only</label>
+  <label>Covid_19 App - John Hopkins Data Set - Updated Daily 1 File onlyhttp://splunk2.ops.com:8000/en-GB/app/covid19/covid_19/edit#</label>
   <description>Covid Data</description>
   <search id="baseSearch1_UK">
     <query>index=covid sourcetype=covid_csv Country_Region=UK OR Country_Region="United Kingdom" 
@@ -112,7 +112,7 @@
       <title>World Total Deaths</title>
       <single>
         <search base="baseSearch2_WORLD">
-          <query>search Deaths=* | timechart max(Deaths) </query>
+          <query>search Deaths=* |  stats count</query>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -209,7 +209,6 @@
           <query> |  fields Country_Region, Deaths, Confirmed, Recovered |  table Country_Region, Confirmed, Recovered, Deaths 
           | sort - Deaths 
           | dedup Country_Region          </query>
-   
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
