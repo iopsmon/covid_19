@@ -92,7 +92,7 @@
       <title>UK Total Recovered</title>
       <single>
         <search base="baseSearch1_UK">
-          <query>search Recovered=*  | timechart max(Recovered) </query>
+          <query>search Recovered=*  | timechart max(Recovered)</query>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -118,8 +118,8 @@
     <panel>
       <title>World Total Confirmed</title>
       <single>
-        <search >
-            <query>index=covid Confirmed=* |  timechart sum(Confirmed)</query>
+        <search>
+          <query>index=covid Confirmed=* |  timechart sum(Confirmed)</query>
           <earliest>$earliest$</earliest>
           <latest>$latest$</latest>
         </search>
@@ -173,7 +173,7 @@
       <title>World Total Recovered</title>
       <single>
         <search base="baseSearch2_WORLD">
-          <query>search Recovered=*  | timechart max(Recovered) </query>
+          <query>search Recovered=*  | timechart max(Recovered)</query>
         </search>
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
@@ -181,6 +181,7 @@
         <option name="numberPrecision">0</option>
         <option name="rangeColors">["0x53a051","0x53a051"]</option>
         <option name="rangeValues">[0]</option>
+        <option name="refresh.display">progressbar</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
         <option name="trellis.enabled">0</option>
