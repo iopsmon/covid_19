@@ -1,5 +1,5 @@
 <dashboard theme="dark">
-  <label>Covid_19 App - John Hopkins Data Set - Updated Daily 1 File only</label>
+  <label>Covid_19 App - John Hopkins Data Set - Updated Daily One File only</label>
   <description>Covid Data</description>
   <search id="baseSearch1_UK">
     <query>index=covid sourcetype=covid_csv Country_Region=UK OR Country_Region="United Kingdom" 
