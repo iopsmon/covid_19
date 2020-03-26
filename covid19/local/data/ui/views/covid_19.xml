@@ -1,5 +1,5 @@
 <dashboard theme="dark">
-  <label>Covid_19 App - John Hopkins Data Set - Updated Daily One File only</label>
+  <label>Covid_19 App - John Hopkins Data Set - Updated Daily 1 File only</label>
   <description>Covid Data</description>
   <search id="baseSearch1_UK">
     <query>index=covid sourcetype=covid_csv Country_Region=UK OR Country_Region="United Kingdom" 
@@ -91,7 +91,7 @@
     <panel>
       <title>UK Total Recovered</title>
       <single>
-        <search base="baseSearch1_UK">
+      <search base="baseSearch1_UK">
           <query>search Recovered=*  | timechart max(Recovered)</query>
         </search>
         <option name="colorBy">value</option>
@@ -117,82 +117,55 @@
   <row>
     <panel>
       <title>World Total Confirmed</title>
-      <single>
+      <chart>
         <search>
-          <query>index=covid Confirmed=* |  timechart sum(Confirmed)</query>
+          <query>index=covid Confirmed=* sourcetype=covid_csv
+| timechart sum(Confirmed) as total_confirmed 
+| sort - total_confirmed</query>
           <earliest>$earliest$</earliest>
           <latest>$latest$</latest>
         </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
-        <option name="rangeValues">[0]</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
         <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
         <option name="trellis.enabled">0</option>
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="unitPosition">after</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
+      </chart>
     </panel>
     <panel>
       <title>World Total Deaths</title>
-      <single>
+      <chart>
         <search>
-          <query>index=covid Deaths=* |  timechart sum(Deaths)</query>
+          <query>index=covid Deaths=* sourcetype=covid_csv
+| timechart sum(Deaths) as total_deaths 
+| sort - total_deaths</query>
           <earliest>$earliest$</earliest>
           <latest>$latest$</latest>
         </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x53a051","0xdc4e41"]</option>
-        <option name="rangeValues">[0]</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
         <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
         <option name="trellis.enabled">0</option>
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="unitPosition">after</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
+      </chart>
     </panel>
     <panel>
       <title>World Total Recovered</title>
-      <single>
-        <search base="baseSearch2_WORLD">
-          <query>search Recovered=*  | timechart max(Recovered)</query>
+      <chart>
+        <search>
+          <query>index=covid Recovered=* sourcetype=covid_csv
+| timechart sum(Recovered) as total_recovered 
+| sort - total_recovered</query>
         </search>
-        <option name="colorBy">value</option>
-        <option name="colorMode">block</option>
-        <option name="drilldown">none</option>
-        <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x53a051","0x53a051"]</option>
-        <option name="rangeValues">[0]</option>
+        <option name="charting.chart">line</option>
+        <option name="charting.drilldown">none</option>
         <option name="refresh.display">progressbar</option>
-        <option name="showSparkline">1</option>
-        <option name="showTrendIndicator">1</option>
         <option name="trellis.enabled">0</option>
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
-        <option name="trendColorInterpretation">standard</option>
-        <option name="trendDisplayMode">absolute</option>
-        <option name="unitPosition">after</option>
-        <option name="useColors">1</option>
-        <option name="useThousandSeparators">1</option>
-      </single>
+      </chart>
     </panel>
   </row>
   <row>
